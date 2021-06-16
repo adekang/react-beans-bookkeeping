@@ -1,5 +1,4 @@
 import React from 'react';
-import Layout from '../components/Layout';
 import styled from 'styled-components';
 import HeaderSection from '../components/Records/HeaderSection';
 import RecordsSection from '../components/Records/RecordsSection';
@@ -17,12 +16,10 @@ function Records() {
 
 
   return (
-    <Layout>
-      <LayoutWrapper>
-        <RecordsSection/>
-        <HeaderSection/>
-      </LayoutWrapper>
-    </Layout>
+    <LayoutWrapper>
+      <RecordsSection/>
+      <HeaderSection/>
+    </LayoutWrapper>
   );
 }
 

@@ -59,64 +59,33 @@ const NavWrapper = styled.nav`
   }
 `;
 
-const Record = styled.li`
-  > a {
 
-    > span {
-      display: block;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(0deg, #ff5e64 0%, #ff9160 100%);
-      box-shadow: 0px -2px 10px 0px rgba(255, 100, 100, 0.10);
-      line-height: 60px;
-
-      > .icon {
-        fill: #fff;
-      }
-    }
-  }
-`;
 const Nav = () => {
   return (
     <NavWrapper>
       <ul>
-
         <li>
-          <NavLink to="/money" activeClassName="selected">
+          <NavLink to="/index" activeClassName="selected">
+            <Icon name="users"/>
+            首页
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/detail" activeClassName="selected">
             <Icon name="money"/>
-            钱包
+            明细
           </NavLink>
         </li>
 
         <li>
           <NavLink to="/charts" activeClassName="selected">
             <Icon name="charts"/>
-            图标
+            统计
           </NavLink>
         </li>
 
-        <Record>
-          <NavLink to="/records" activeClassName="selected">
-            <span>
-              <Icon name="records" className="whirl"/>
-            </span>
-          </NavLink>
-        </Record>
 
-        <li>
-          <NavLink to="/date" activeClassName="selected">
-            <Icon name="date"/>
-            日期
-          </NavLink>
-        </li>
 
-        <li>
-          <NavLink to="/users" activeClassName="selected">
-            <Icon name="users"/>
-            用户
-          </NavLink>
-        </li>
       </ul>
     </NavWrapper>
   );

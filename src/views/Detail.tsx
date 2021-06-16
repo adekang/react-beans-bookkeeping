@@ -13,7 +13,7 @@ const LayoutWrapper = styled(Layout)`
 `;
 
 
-function Money() {
+function Detail() {
   return (
     <LayoutWrapper>
 
@@ -31,4 +31,4 @@ function Money() {
   );
 }
 
-export default Money;
+export default Detail;
