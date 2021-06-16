@@ -1,24 +1,12 @@
 import {NavLink} from 'react-router-dom';
 import React from 'react';
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 import Icon from './Icon';
-
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(180deg);
-  }
-`;
 
 const NavWrapper = styled.nav`
   box-shadow: 0px -1px 0px 1px rgba(20, 7, 0, 0.1);
   background-color: #FFFFFF;
-
-
+  
   > ul {
     display: flex;
 
@@ -47,12 +35,6 @@ const NavWrapper = styled.nav`
           .icon {
             fill: #FC5460;
           }
-
-          .whirl {
-            fill: white;
-            animation: ${rotate} 250ms linear;
-          }
-
         }
       }
     }
