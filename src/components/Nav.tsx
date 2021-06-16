@@ -1,0 +1,121 @@
+import {NavLink} from 'react-router-dom';
+import React from 'react';
+import styled, {keyframes} from 'styled-components';
+
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+`;
+
+const NavWrapper = styled.nav`
+  box-shadow: 0px -1px 0px 1px rgba(20, 7, 0, 0.1);
+  background-color: #FFFFFF;
+
+
+  > ul {
+    display: flex;
+
+    > li {
+      padding: 5px 0;
+      width: 33.3%;
+      text-align: center;
+
+      > a {
+        font-size: 12px;
+        color: #999999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+          width: 22px;
+          height: 22px;
+          margin-bottom: 4px;
+        }
+
+        &.selected {
+          color: #FC5460;
+
+          .icon {
+            fill: #FC5460;
+          }
+
+          .whirl {
+            fill: white;
+            animation: ${rotate} 250ms linear ;
+          }
+
+        }
+      }
+    }
+  }
+`;
+
+const Record = styled.li`
+  > a {
+
+    > span {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(0deg, #ff5e64 0%, #ff9160 100%);
+      box-shadow: 0px -2px 10px 0px rgba(255, 100, 100, 0.10);
+      line-height: 60px;
+
+      > .icon {
+        fill: #fff;
+      }
+    }
+  }
+`;
+const Nav = () => {
+  return (
+    <NavWrapper>
+      <ul>
+
+        <li>
+          <NavLink to="/money" activeClassName="selected">
+            钱包
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/charts" activeClassName="selected">
+            图标
+          </NavLink>
+        </li>
+
+        <Record>
+          <NavLink to="/records" activeClassName="selected">
+            <span>
+              +
+            </span>
+          </NavLink>
+        </Record>
+
+        <li>
+          <NavLink to="/date" activeClassName="selected">
+            日期
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/users" activeClassName="selected">
+            用户
+          </NavLink>
+        </li>
+      </ul>
+    </NavWrapper>
+  );
+};
+
+
+export {Nav};
