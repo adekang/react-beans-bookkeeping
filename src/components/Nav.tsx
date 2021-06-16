@@ -50,7 +50,7 @@ const NavWrapper = styled.nav`
 
           .whirl {
             fill: white;
-            animation: ${rotate} 250ms linear ;
+            animation: ${rotate} 250ms linear;
           }
 
         }
