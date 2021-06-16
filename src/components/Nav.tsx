@@ -1,6 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
+import Icon from './Icon';
 
 
 const rotate = keyframes`
@@ -83,12 +84,14 @@ const Nav = () => {
 
         <li>
           <NavLink to="/money" activeClassName="selected">
+            <Icon name="money"/>
             钱包
           </NavLink>
         </li>
 
         <li>
           <NavLink to="/charts" activeClassName="selected">
+            <Icon name="charts"/>
             图标
           </NavLink>
         </li>
@@ -96,19 +99,21 @@ const Nav = () => {
         <Record>
           <NavLink to="/records" activeClassName="selected">
             <span>
-              +
+              <Icon name="records" className="whirl"/>
             </span>
           </NavLink>
         </Record>
 
         <li>
           <NavLink to="/date" activeClassName="selected">
+            <Icon name="date"/>
             日期
           </NavLink>
         </li>
 
         <li>
           <NavLink to="/users" activeClassName="selected">
+            <Icon name="users"/>
             用户
           </NavLink>
         </li>

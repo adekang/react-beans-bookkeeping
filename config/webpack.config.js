@@ -374,10 +374,13 @@ module.exports = function (webpackEnv) {
               test: /\.svg$/,
               use: [
                 {loader: 'svg-sprite-loader', options: {}},
-                'svg-transform-loader',
-                // 'svgo-loader'
-                // 上面这句可以使用下面这句深度配置
-                {loader: 'svgo-loader', options: {}}
+                {
+                  loader: 'svgo-loader', options: {
+                    plugins: [
+                      {removeAttrs: {attrs: 'fill'}}
+                    ]
+                  }
+                }
               ]
             },
             {
