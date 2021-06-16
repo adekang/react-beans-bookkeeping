@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   max-width: 414px;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
   //margin: 0 auto;
 `;
 const Main = styled.div`

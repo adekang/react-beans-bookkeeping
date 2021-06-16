@@ -5,20 +5,19 @@ import RecordsSection from '../components/Records/RecordsSection';
 
 
 const LayoutWrapper = styled.div`
-  height: 100%;
+  height: 100vh;
+  max-width: 414px;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
 `;
 
 
 function Records() {
-
-
   return (
     <LayoutWrapper>
-      <RecordsSection/>
       <HeaderSection/>
+      <RecordsSection/>
     </LayoutWrapper>
   );
 }

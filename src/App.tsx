@@ -27,7 +27,7 @@ const App = () => {
           <Records/>
         </Route>
 
-        <Redirect exact from="/" to="/money"/>
+        <Redirect exact from="/" to="/index"/>
 
         <Route path="*">
           <NoMatch/>
