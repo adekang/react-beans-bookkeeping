@@ -1,7 +1,12 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 function Charts() {
-  return <h2>Charts</h2>;
+  return (
+    <Layout>
+      <div>图表页面</div>
+    </Layout>
+  );
 }
 
 export default Charts;

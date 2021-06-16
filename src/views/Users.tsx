@@ -1,7 +1,13 @@
 import React from 'react';
 
+import Layout from '../components/Layout';
+
 function Users() {
-  return <h2>用户</h2>;
+  return (
+    <Layout>
+      <div>用户界面</div>
+    </Layout>
+  );
 }
 
-export default Users;
+export  default  Users
