@@ -3,18 +3,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import {NavLink} from 'react-router-dom';
 import Icon from '../components/Icon';
-import styled, {keyframes} from 'styled-components';
-
-// const rotate = keyframes`
-//   from {
-//     transform: rotate(0deg);
-//   }
-//
-//   to {
-//     transform: rotate(180deg);
-//   }
-// `;
-
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;

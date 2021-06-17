@@ -5,7 +5,7 @@ function NoMatch() {
   return (
     <div>
       <h2>找不到当前页面</h2>
-      <Link to="/money">回到首页</Link>
+      <Link to="/index">回到首页</Link>
     </div>
   );
 }
