@@ -18,15 +18,12 @@ const App = () => {
         <Route path="/index" exact>
           <Index/>
         </Route>
-
-        <Route path="/charts" exact>
-          <Charts/>
-        </Route>
-
         <Route path="/index/records" exact>
           <Records/>
         </Route>
-
+        <Route path="/charts" >
+          <Charts/>
+        </Route>
         <Redirect exact from="/" to="/index"/>
 
         <Route path="*">

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, Redirect, Route, Router, Switch, useRouteMatch} from 'react-router-dom';
+import {Link, Redirect, Route, Switch, useRouteMatch} from 'react-router-dom';
 import {OutlayLib} from './ChartsLib/OutlayLib';
 import {IncomeLib} from './ChartsLib/ IncomeLib';
 import {TotalLib} from './ChartsLib/TotalLib';
@@ -20,11 +20,18 @@ const SelectedPart: React.FC = () => {
           <Link to={`${url}/income`}>支出分析</Link>
         </li>
       </ul>
+      <hr/>
       <Switch>
-        <Route exact path={`${path}/total`} component={TotalLib}/>
-        <Route exact path={`${path}/outlay`} component={OutlayLib}/>
-        <Route exact path={`${path}/income`} component={IncomeLib}/>
-        <Redirect exact from="/statistics" to={`${url}/total`}/>
+        <Route exact path={`${path}/total`}>
+          <TotalLib/>
+        </Route>
+        <Route exact path={`${path}/outlay`}>
+          <OutlayLib/>
+        </Route>
+        <Route exact path={`${path}/income`}>
+          <IncomeLib/>
+        </Route>
+        <Redirect exact from="/charts" to={`${url}/total`}/>
       </Switch>
     </div>
   );
