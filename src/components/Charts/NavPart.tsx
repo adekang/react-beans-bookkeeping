@@ -1,8 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const H3 = styled.h3`
+  text-align: center;
+  margin: 16px 0;
+`;
 
 function NavPart() {
   return (
-    <h3>统计</h3>
+    <H3>统计</H3>
   );
 }
 
