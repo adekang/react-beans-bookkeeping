@@ -43,7 +43,6 @@ const HeaderSection: React.FC<Props> = (props) => {
   const selectedTags = props.value;
 
   const onToggleTag = (tag: number) => {
-    console.log(tag);
     const index = selectedTags.indexOf(tag);
     if (index >= 0) {
       props.onChange(selectedTags.filter(t => t !== tag));
