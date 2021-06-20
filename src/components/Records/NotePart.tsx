@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -19,18 +19,12 @@ const Wrapper = styled.div`
   }
 `;
 
-type Props = {
-  value: string,
-  onChange: (value: string) => void
-}
-const NotePart: React.FC<Props> = (props) => {
-  const note = props.value;
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    props.onChange(e.target.value);
-  };
+
+const NotePart: React.FC = (props) => {
+  const [note, setNote] = useState('');
   return (
     <Wrapper>
-      <div>备注：<input type="text" value={note} onChange={onChange} placeholder="请输入备注"/></div>
+      <div>备注：<input value={note} onChange={(e) => setNote(e.target.value)} type="text" placeholder="请输入备注"/></div>
     </Wrapper>
   );
 };

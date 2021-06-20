@@ -21,25 +21,15 @@ const Wrapper = styled.div`
   }
 `;
 
-type Props = {
-  value: '-' | '+',
-  onChange: (value: ('-' | '+')) => void
-}
 
-const SelectionParts: React.FC<Props> = (props) => {
-  const selectionMap = {'-': '支出', '+': '收入'};
-  type Keys = keyof typeof selectionMap
-  const [categoryList] = useState<Keys[]>(['-', '+']);
-  const category = props.value;
+const SelectionParts: React.FC = () => {
+
   return (
     <Wrapper>
-      {categoryList.map(c =>
-        <div key={c}
-             className={category === c ? 'selected' : ''}
-             onClick={() => {props.onChange(c);}}>
-          {selectionMap[c]}
-        </div>
-      )}
+      <div>
+        收入
+      </div>
+      <div>支出</div>
     </Wrapper>
   );
 };

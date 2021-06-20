@@ -27,44 +27,12 @@ const Wrapper = styled.div`
 `;
 
 
-type  Props = {
-  value: number,
-  onChange: (value: number) => void,
-  onOk?: () => void
-}
+const NumberPadPart: React.FC = () => {
 
-
-const NumberPadPart: React.FC<Props> = (props) => {
-  const [output, _setOutput] = useState(JSON.stringify(props.value));
-  const setOutput = (output: string) => {
-    let newOutput: string;
-    if (output.length > 16) {
-      newOutput = output.slice(0, 16);
-    } else if (output.length === 0) {
-      newOutput = '0';
-    } else {
-      newOutput = output;
-    }
-    _setOutput(newOutput);
-    props.onChange(parseFloat(newOutput));
-  };
-  const onClickButtonWrapper = (e: React.MouseEvent) => {
-    const text = (e.target as HTMLButtonElement).textContent;
-    if (text === null) {return;}
-    if (text === 'ok') {
-      if (props.onOk) {
-        props.onOk();
-      }
-      return;
-    }
-    if ('0123456789'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
-      setOutput(generateOutput(text, output));
-    }
-  };
   return (
     <Wrapper>
-      <div className="output">{output}</div>
-      <div onClick={onClickButtonWrapper}>
+      <div className="output">100</div>
+      <div>
         <button>1</button>
         <button>2</button>
         <button>3</button>
