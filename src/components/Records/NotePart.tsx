@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -22,9 +22,15 @@ const Wrapper = styled.div`
 
 const NotePart: React.FC = (props) => {
   const [note, setNote] = useState('');
+  const refInput = useRef<HTMLInputElement>(null);
+  const onBlur = () => {
+    if (refInput.current !== null) {
+      setNote(refInput.current.value);
+    }
+  };
   return (
     <Wrapper>
-      <div>备注：<input value={note} onChange={(e) => setNote(e.target.value)} type="text" placeholder="请输入备注"/></div>
+      <div>备注：<input ref={refInput} defaultValue={note} onBlur={onBlur} type="text" placeholder="请输入备注"/></div>
     </Wrapper>
   );
 };
