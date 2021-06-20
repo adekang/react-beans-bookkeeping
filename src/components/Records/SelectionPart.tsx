@@ -23,13 +23,17 @@ const Wrapper = styled.div`
 
 
 const SelectionParts: React.FC = () => {
+  const [categoryList] = useState<('-' | '+')[]>(['-', '+']);
+  const [category, setCategory] = useState('-');
+  const categoryMap = {'-': '支出', '+': '收入'};
 
   return (
     <Wrapper>
-      <div>
-        收入
-      </div>
-      <div>支出</div>
+      {categoryList.map((c, index) =>
+          <div className={category === c ? 'selected' : ''} onClick={() => {setCategory(c);}} key={index}>
+            {categoryMap[c]}
+          </div>
+      )}
     </Wrapper>
   );
 };
