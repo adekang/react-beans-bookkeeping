@@ -20,18 +20,23 @@ const Wrapper = styled.div`
 
   }
 `;
+type Props = {
+  category: '-' | '+',
+  onChangeCategory: (category: '-' | '+') => void
+}
 
 
-const SelectionPart: React.FC = () => {
+const SelectionPart: React.FC<Props> = (props) => {
   const categoryMap = {'-': '支出', '+': '收入'};
   type keys = keyof typeof categoryMap
   const [categoryList] = useState<keys[]>(['-', '+']);
-  const [category, setCategory] = useState('-');
+  const category = props.category;
+
 
   return (
     <Wrapper>
       {categoryList.map((c, index) =>
-        <div className={category === c ? 'selected' : ''} onClick={() => {setCategory(c);}} key={index}>
+        <div className={category === c ? 'selected' : ''} onClick={() => {props.onChangeCategory(c);}} key={index}>
           {categoryMap[c]}
         </div>
       )}

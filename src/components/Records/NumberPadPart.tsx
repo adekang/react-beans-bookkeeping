@@ -27,7 +27,12 @@ const Wrapper = styled.div`
 `;
 
 
-const NumberPadPart: React.FC = () => {
+type Props = {
+  amount: string,
+  onChangeAmount: (amount: string) => void
+}
+
+const NumberPadPart: React.FC<Props> = (props) => {
   const [output, _setOutput] = useState<string>('0');
   const setOutput = (output: string) => {
     if (output.length > 16) {
@@ -36,6 +41,7 @@ const NumberPadPart: React.FC = () => {
       output = '0';
     }
     _setOutput(output);
+    props.onChangeAmount(output);
   };
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;

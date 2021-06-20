@@ -20,12 +20,18 @@ const Wrapper = styled.div`
 `;
 
 
-const NotePart: React.FC = (props) => {
-  const [note, setNote] = useState('');
+type  Props = {
+  note: string,
+  onChangeNote: (value: string) => void
+}
+
+
+const NotePart: React.FC<Props> = (props) => {
+  const {note} = props;
   const refInput = useRef<HTMLInputElement>(null);
   const onBlur = () => {
     if (refInput.current !== null) {
-      setNote(refInput.current.value);
+      props.onChangeNote(refInput.current.value);
     }
   };
   return (

@@ -12,7 +12,17 @@ const Wrapper = styled.div`
 `;
 
 
-const RecordsSection: React.FC = () => {
+type Props = {
+  note: string,
+  category: '-' | '+',
+  amount: string,
+  onChangeNote: (note: string) => void
+  onChangeAmount: (amount: string) => void
+  onChangeCategory: (category: '-' | '+') => void
+}
+const RecordsSection: React.FC<Props> = (props) => {
+
+
   let history = useHistory();
   const submit = () => {
     alert('保存成功');
@@ -20,9 +30,9 @@ const RecordsSection: React.FC = () => {
   };
   return (
     <Wrapper>
-      <SelectionPart/>
-      <NotePart/>
-      <NumberPadPart/>
+      <SelectionPart {...props}/>
+      <NotePart {...props}/>
+      <NumberPadPart{...props}/>
     </Wrapper>
   );
 };

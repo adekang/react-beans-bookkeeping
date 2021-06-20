@@ -33,17 +33,22 @@ const Tags = [
   {id: 11, tagId: '11', tagName: '餐饮'},
 ];
 
-const HeaderSection: React.FC = (props) => {
+type Props = {
+  value: number[],
+  onChange: (selected: number[]) => void
+}
+
+const HeaderSection: React.FC<Props> = (props) => {
   const [tags, setTags] = useState<TagsProps[]>(Tags);
-  const [selectedTags, setSelectedTags] = useState<number[]>([]);
+  const selectedTags = props.value;
 
   const onToggleTag = (tag: number) => {
     console.log(tag);
     const index = selectedTags.indexOf(tag);
     if (index >= 0) {
-      setSelectedTags(selectedTags.filter(t => t !== tag));
+      props.onChange(selectedTags.filter(t => t !== tag));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      props.onChange([...selectedTags, tag]);
     }
   };
 
