@@ -94,7 +94,7 @@ const NavBar: React.FC = () => {
         <OveragePart>
           <div>
             <span>￥</span>
-            <em className="amount">2366</em>
+            <em className="amount">{toggleSvg ? '2366' : '*****'}</em>
             <Icon onClick={() => changeSvg()} name={toggleSvg ? 'open_eye' : 'close_eye'}/>
           </div>
         </OveragePart>

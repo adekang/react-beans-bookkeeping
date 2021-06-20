@@ -19,7 +19,7 @@ const Wrapper = styled.div`
       background-color: white;
 
       &.zero {
-        width: 50%;
+        width: 75%;
       }
     }
   }
@@ -57,7 +57,7 @@ const NumberPadPart: React.FC<Props> = (props) => {
       }
       return;
     }
-    if ('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
+    if ('0123456789'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
       setOutput(generateOutput(text, output));
     }
   };
@@ -78,7 +78,6 @@ const NumberPadPart: React.FC<Props> = (props) => {
         <button>9</button>
         <button>清空</button>
         <button className="zero">0</button>
-        <button className="dot">.</button>
         <button className="ok">ok</button>
       </div>
     </Wrapper>
