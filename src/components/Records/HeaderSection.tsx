@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Icon from 'components/Icon';
 import styled from 'styled-components';
 import TagsPart from './TagsPart';
@@ -15,9 +15,40 @@ const Wrapper = styled.div`
     width: 0;
   }
 `;
+type TagsProps = {
+  id: number, tagId: string, tagName: string
+};
+
+const Tags = [
+  {id: 1, tagId: '1', tagName: '住宿'},
+  {id: 2, tagId: '2', tagName: '早餐'},
+  {id: 3, tagId: '3', tagName: '午餐'},
+  {id: 4, tagId: '4', tagName: '晚餐'},
+  {id: 5, tagId: '5', tagName: '停车'},
+  {id: 6, tagId: '6', tagName: '亲子'},
+  {id: 7, tagId: '7', tagName: '景点'},
+  {id: 8, tagId: '8', tagName: '出行'},
+  {id: 9, tagId: '9', tagName: '购物'},
+];
 
 
 const HeaderSection: React.FC = (props) => {
+  const [tags, setTags] = useState<TagsProps[]>(Tags);
+  const [selectedTags, setSelectedTags] = useState<number[]>([]);
+
+  const onToggleTag = (tag: number) => {
+    console.log(tag);
+    const index = selectedTags.indexOf(tag);
+    if (index >= 0) {
+      setSelectedTags(selectedTags.filter(t => t !== tag));
+    } else {
+      setSelectedTags([...selectedTags, tag]);
+    }
+  };
+
+  const getClass = (tag: number) => {
+    return selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
+  };
   return (
     <Wrapper>
       <TagsPart>
@@ -28,28 +59,12 @@ const HeaderSection: React.FC = (props) => {
           <span>标签选择</span>
         </div>
         <ul>
-          <li className="selected"><span><Icon name="fruits"/></span><p>饮食</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="fruits"/></span><p>服装</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="fruits"/></span><p>服装</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="fruits"/></span><p>服装</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="fruits"/></span><p>服装</p></li>
-          <li><span><Icon name="fruits"/></span><p>出行</p></li>
-          <li><span><Icon name="fruits"/></span><p>住宿</p></li>
-          <li><span><Icon name="records"/></span><p>新增标签</p></li>
+          {tags.map(tag =>
+            <li className={getClass(tag.id)}
+                onClick={() => onToggleTag(tag.id)} key={tag.id}>
+              <span><Icon name={tag.tagId}/></span>
+              <p>{tag.tagName}</p></li>
+          )}
         </ul>
       </TagsPart>
     </Wrapper>
