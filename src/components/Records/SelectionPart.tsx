@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 `;
 
 
-const SelectionParts: React.FC = () => {
+const SelectionPart: React.FC = () => {
   const categoryMap = {'-': '支出', '+': '收入'};
   type keys = keyof typeof categoryMap
   const [categoryList] = useState<keys[]>(['-', '+']);
@@ -39,4 +39,4 @@ const SelectionParts: React.FC = () => {
   );
 };
 
-export default SelectionParts;
+export default SelectionPart;

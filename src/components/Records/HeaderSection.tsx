@@ -29,8 +29,9 @@ const Tags = [
   {id: 7, tagId: '7', tagName: '景点'},
   {id: 8, tagId: '8', tagName: '出行'},
   {id: 9, tagId: '9', tagName: '购物'},
+  {id: 10, tagId: '10', tagName: '消费'},
+  {id: 11, tagId: '11', tagName: '餐饮'},
 ];
-
 
 const HeaderSection: React.FC = (props) => {
   const [tags, setTags] = useState<TagsProps[]>(Tags);
