@@ -40,39 +40,16 @@ const NumberPadPart: React.FC = () => {
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (!text) {return;}
-    switch (text) {
-      case '0':
-      case '1':
-      case '2':
-      case '3':
-      case '4':
-      case '5':
-      case '6':
-      case '7':
-      case '8':
-      case '9':
-        if (output === '0') {
-          setOutput(text);
-        } else {
-          setOutput(output + text);
-        }
-        break;
-      case '删除':
-        if (output.length === 1) {
-          setOutput('');
-        } else {
-          setOutput(output.slice(0, -1));
-        }
-        break;
-      case '清空':
-        setOutput('');
-        break;
-      case 'ok':
-        console.log('ok');
-        break;
-      case '今天':
-        console.log('今天');
-        break;
+    if (text === 'ok') {
+      console.log('ok');
+      return;
+    }
+    if (text === '今天') {
+      console.log('今天');
+      return;
+    }
+    if ('0123456789'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
+      setOutput(generateOutput(text, output));
     }
   };
   return (
