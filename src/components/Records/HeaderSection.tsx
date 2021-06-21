@@ -24,8 +24,7 @@ type Props = {
 }
 
 const HeaderSection: React.FC<Props> = (props) => {
-  const {tags, updateTag} = useTags();
-
+  const {tags, deleteTag} = useTags();
   const selectedTagIds = props.value;
   const toggleTag = (tag: number) => {
     const index = selectedTagIds.indexOf(tag);
@@ -39,6 +38,7 @@ const HeaderSection: React.FC<Props> = (props) => {
   const getClass = (tagId: number) => {
     return selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
   };
+
   return (
     <Wrapper>
       <TagsPart>
