@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createId} from '../lib/createId';
 
 type TagsProps = {
@@ -19,9 +19,12 @@ const Tags = [
 ];
 const useTags = () => {
   const [tags, setTags] = useState<TagsProps[]>(Tags);
+
+  // 查找tag
   const findTag = (id: number) => {
     return tags.filter(tag => tag.id === id)[0];
   };
+  // 查找tag下标
   const findTagIndex = (id: number) => {
     let result = -1;
     for (let i = 0; i < tags.length; i++) {
@@ -32,15 +35,36 @@ const useTags = () => {
     }
     return result;
   };
+
+  // 更新tag
   const updateTag = (id: number, obj: { name: string, iconName: string }) => {
-    setTags(tags.map(tag => tag.id === id ? {id, name: obj.name, iconName: obj.iconName} : tag));
+    return setTags(tags.map(tag => tag.id === id ? {id, name: obj.name, iconName: obj.iconName} : tag));
   };
 
+  // 删除
   const deleteTag = (id: number) => {
-    return setTags(tags.filter(tag => tag.id !== id));
+    return setTags((tags) => tags.filter(tag => tag.id !== id));
   };
 
-  return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag};
+  // 添加该标签
+  const addTag = (name: string, iconName: string) => {
+    if (name !== null && name !== '') {
+      return setTags([...tags, {id: createId(), name, iconName}]);
+    }
+  };
+
+  // 获取该tag的名字
+  const getName = (id: number) => {
+    const tag = tags.filter(tag => tag.id === id)[0];
+    return tag ? tag.name : '';
+  };
+  // 获取该tag的图标
+  const getIcon = (id: number) => {
+    const tag = tags.filter(tag => tag.id === id)[0];
+    return tag ? tag.iconName : '9999';
+  };
+
+  return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag, addTag};
 };
 
 

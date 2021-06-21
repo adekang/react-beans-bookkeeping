@@ -24,7 +24,7 @@ type Props = {
 }
 
 const HeaderSection: React.FC<Props> = (props) => {
-  const {tags, deleteTag} = useTags();
+  const {tags} = useTags();
   const selectedTagIds = props.value;
   const toggleTag = (tag: number) => {
     const index = selectedTagIds.indexOf(tag);
