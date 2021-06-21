@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {createId} from '../lib/createId';
+import {useUpdate} from './useUpdate';
 
 type TagsProps = {
   id: number, iconName: string, name: string
@@ -19,6 +20,11 @@ const Tags = [
 ];
 const useTags = () => {
   const [tags, setTags] = useState<TagsProps[]>(Tags);
+
+
+  useUpdate(() => {
+    window.localStorage.setItem('tags', JSON.stringify(tags));
+  }, [tags]);
 
   // 查找tag
   const findTag = (id: number) => {
@@ -64,7 +70,7 @@ const useTags = () => {
     return tag ? tag.iconName : '9999';
   };
 
-  return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag, addTag};
+  return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag, addTag, getIcon, getName};
 };
 
 
