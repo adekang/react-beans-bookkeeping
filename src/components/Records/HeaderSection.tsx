@@ -24,7 +24,8 @@ type Props = {
 }
 
 const HeaderSection: React.FC<Props> = (props) => {
-  const {tags} = useTags();
+  const {tags, updateTag} = useTags();
+
   const selectedTagIds = props.value;
   const toggleTag = (tag: number) => {
     const index = selectedTagIds.indexOf(tag);
@@ -51,8 +52,8 @@ const HeaderSection: React.FC<Props> = (props) => {
           {tags.map(tag =>
             <li className={getClass(tag.id)}
                 onClick={() => toggleTag(tag.id)} key={tag.id}>
-              <span><Icon name={tag.tagId}/></span>
-              <p>{tag.tagName}</p></li>
+              <span><Icon name={tag.iconName}/></span>
+              <p>{tag.name}</p></li>
           )}
         </ul>
       </TagsPart>
