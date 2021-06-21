@@ -22,6 +22,8 @@ function Records() {
     amount: '0'
 
   });
+
+  console.log(selected);
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -43,6 +45,7 @@ function Records() {
         note={selected.note} onChangeNote={(note) => {onChange({note});}}
         category={selected.category} onChangeCategory={(category) => {onChange({category});}}
         amount={selected.amount} onChangeAmount={(amount) => {onChange({amount});}}
+        onOk={() => {}}
       />
     </LayoutWrapper>
   );

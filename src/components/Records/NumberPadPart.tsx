@@ -29,11 +29,12 @@ const Wrapper = styled.div`
 
 type Props = {
   amount: string,
-  onChangeAmount: (amount: string) => void
+  onChangeAmount: (amount: string) => void,
+  onOk?: () => void
 }
 
 const NumberPadPart: React.FC<Props> = (props) => {
-  const [output, _setOutput] = useState<string>('0');
+  const [output, _setOutput] = useState('0');
   const setOutput = (output: string) => {
     if (output.length > 16) {
       output = output.slice(0, 16);
@@ -47,7 +48,9 @@ const NumberPadPart: React.FC<Props> = (props) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (!text) {return;}
     if (text === 'ok') {
-      console.log('ok');
+      if (props.onOk) {
+        props.onOk();
+      }
       return;
     }
     if (text === '今天') {

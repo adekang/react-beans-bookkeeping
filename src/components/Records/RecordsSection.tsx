@@ -16,9 +16,11 @@ type Props = {
   note: string,
   category: '-' | '+',
   amount: string,
-  onChangeNote: (note: string) => void
-  onChangeAmount: (amount: string) => void
-  onChangeCategory: (category: '-' | '+') => void
+  onChangeNote: (note: string) => void,
+  onChangeAmount: (amount: string) => void,
+  onChangeCategory: (category: '-' | '+') => void,
+  onOk?: () => void
+
 }
 const RecordsSection: React.FC<Props> = (props) => {
 

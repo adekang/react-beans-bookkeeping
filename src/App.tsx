@@ -6,7 +6,6 @@ import Records from './views/Records';
 import Charts from './views/Charts';
 import NoMatch from './views/NoMatch';
 
-
 const App = () => {
   return (
     <Router>
@@ -14,18 +13,16 @@ const App = () => {
         <Route path="/detail" exact>
           <Detail/>
         </Route>
-
         <Route path="/index" exact>
           <Index/>
         </Route>
         <Route path="/index/records" exact>
           <Records/>
         </Route>
-        <Route path="/charts" >
+        <Route path="/charts">
           <Charts/>
         </Route>
         <Redirect exact from="/" to="/index"/>
-
         <Route path="*">
           <NoMatch/>
         </Route>
