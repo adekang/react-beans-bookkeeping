@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import HeaderSection from '../components/Records/HeaderSection';
-import RecordsSection from '../components/Records/RecordsSection';
+import HeaderSection from 'components/Records/HeaderSection';
+import RecordsSection from 'components/Records/RecordsSection';
+import {useRecords} from '../hooks/useRecords';
 
 
 const LayoutWrapper = styled.div`
@@ -13,17 +14,18 @@ const LayoutWrapper = styled.div`
 `;
 
 type Category = '-' | '+'
+const defaultFormDate = {
+  tagIds: [] as number[],
+  note: '',
+  category: '-' as Category,
+  amount: '0'
+
+};
 
 function Records() {
-  const [selected, setSelected] = useState({
-    tagIds: [] as number[],
-    note: '',
-    category: '-' as Category,
-    amount: '0'
-
-  });
-
-  console.log(selected);
+  const [selected, setSelected] = useState(defaultFormDate);
+  const {records, addRecords} = useRecords();
+  console.log(records);
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -31,21 +33,20 @@ function Records() {
     });
   };
 
+  const submit = () => {
+    addRecords(selected);
+    alert('保存成功');
+    setSelected(defaultFormDate);
+  };
   return (
     <LayoutWrapper>
-      {selected.tagIds}
-      --
-      {selected.note}
-      --
-      {selected.category}
-      --
-      {selected.amount}
+      {JSON.stringify(selected)}
       <HeaderSection value={selected.tagIds} onChange={(tagIds) => {onChange({tagIds});}}/>
       <RecordsSection
         note={selected.note} onChangeNote={(note) => {onChange({note});}}
         category={selected.category} onChangeCategory={(category) => {onChange({category});}}
         amount={selected.amount} onChangeAmount={(amount) => {onChange({amount});}}
-        onOk={() => {}}
+        onOk={() => submit()}
       />
     </LayoutWrapper>
   );
