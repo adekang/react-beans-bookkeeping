@@ -5,23 +5,29 @@ import {useUpdate} from './useUpdate';
 type TagsProps = {
   id: number, iconName: string, name: string
 };
-const Tags = [
-  {id: createId(), iconName: '1', name: '住宿'},
-  {id: createId(), iconName: '2', name: '早餐'},
-  {id: createId(), iconName: '3', name: '午餐'},
-  {id: createId(), iconName: '4', name: '晚餐'},
-  {id: createId(), iconName: '5', name: '停车'},
-  {id: createId(), iconName: '6', name: '亲子'},
-  {id: createId(), iconName: '7', name: '景点'},
-  {id: createId(), iconName: '8', name: '出行'},
-  {id: createId(), iconName: '9', name: '购物'},
-  {id: createId(), iconName: '10', name: '消费'},
-  {id: createId(), iconName: '11', name: '餐饮'},
-];
+
 const useTags = () => {
-  const [tags, setTags] = useState<TagsProps[]>(Tags);
+  const [tags, setTags] = useState<TagsProps[]>([]);
 
-
+  useEffect(() => {
+    let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]');
+    if (localTags.length === 0) {
+      localTags = [
+        {id: createId(), iconName: '1', name: '住宿'},
+        {id: createId(), iconName: '2', name: '早餐'},
+        {id: createId(), iconName: '3', name: '午餐'},
+        {id: createId(), iconName: '4', name: '晚餐'},
+        {id: createId(), iconName: '5', name: '停车'},
+        {id: createId(), iconName: '6', name: '亲子'},
+        {id: createId(), iconName: '7', name: '景点'},
+        {id: createId(), iconName: '8', name: '出行'},
+        {id: createId(), iconName: '9', name: '购物'},
+        {id: createId(), iconName: '10', name: '消费'},
+        {id: createId(), iconName: '11', name: '餐饮'},
+      ];
+    }
+    setTags(localTags);
+  }, []); // 组件挂在时执行
   useUpdate(() => {
     window.localStorage.setItem('tags', JSON.stringify(tags));
   }, [tags]);
