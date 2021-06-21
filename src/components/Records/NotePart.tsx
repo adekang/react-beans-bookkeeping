@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {ChangeEventHandler, useRef} from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -25,18 +25,14 @@ type  Props = {
   onChangeNote: (value: string) => void
 }
 
-
 const NotePart: React.FC<Props> = (props) => {
   const {note} = props;
-  const refInput = useRef<HTMLInputElement>(null);
-  const onBlur = () => {
-    if (refInput.current !== null) {
-      props.onChangeNote(refInput.current.value);
-    }
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    props.onChangeNote(e.target.value);
   };
   return (
     <Wrapper>
-      <div>备注：<input ref={refInput} defaultValue={note} onBlur={onBlur} type="text" placeholder="请输入备注"/></div>
+      <div><span>备注：</span><input value={note} onChange={onChange} type="text" placeholder="请输入备注"/></div>
     </Wrapper>
   );
 };
