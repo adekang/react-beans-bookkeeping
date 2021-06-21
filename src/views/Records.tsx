@@ -18,14 +18,13 @@ const defaultFormDate = {
   tagIds: [] as number[],
   note: '',
   category: '-' as Category,
-  amount: '0'
+  amount: 0
 
 };
 
 function Records() {
   const [selected, setSelected] = useState(defaultFormDate);
   const {records, addRecords} = useRecords();
-  console.log(records);
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -40,7 +39,6 @@ function Records() {
   };
   return (
     <LayoutWrapper>
-      {JSON.stringify(selected)}
       <HeaderSection value={selected.tagIds} onChange={(tagIds) => {onChange({tagIds});}}/>
       <RecordsSection
         note={selected.note} onChangeNote={(note) => {onChange({note});}}

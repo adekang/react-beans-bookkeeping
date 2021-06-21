@@ -15,9 +15,9 @@ const Wrapper = styled.div`
 type Props = {
   note: string,
   category: '-' | '+',
-  amount: string,
+  amount: number,
   onChangeNote: (note: string) => void,
-  onChangeAmount: (amount: string) => void,
+  onChangeAmount: (amount: number) => void,
   onChangeCategory: (category: '-' | '+') => void,
   onOk?: () => void
 
