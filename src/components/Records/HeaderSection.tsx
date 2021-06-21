@@ -24,20 +24,20 @@ type Props = {
 }
 
 const HeaderSection: React.FC<Props> = (props) => {
-  const {tags, setTags} = useTags();
-  const selectedTags = props.value;
+  const {tags} = useTags();
+  const selectedTagIds = props.value;
 
-  const onToggleTag = (tag: number) => {
-    const index = selectedTags.indexOf(tag);
+  const toggleTag = (tag: number) => {
+    const index = selectedTagIds.indexOf(tag);
     if (index >= 0) {
-      props.onChange(selectedTags.filter(t => t !== tag));
+      props.onChange(selectedTagIds.filter(t => t !== tag));
     } else {
-      props.onChange([...selectedTags, tag]);
+      props.onChange([...selectedTagIds, tag]);
     }
   };
 
-  const getClass = (tag: number) => {
-    return selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
+  const getClass = (tagId: number) => {
+    return selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
   };
   return (
     <Wrapper>
@@ -51,7 +51,7 @@ const HeaderSection: React.FC<Props> = (props) => {
         <ul>
           {tags.map(tag =>
             <li className={getClass(tag.id)}
-                onClick={() => onToggleTag(tag.id)} key={tag.id}>
+                onClick={() => toggleTag(tag.id)} key={tag.id}>
               <span><Icon name={tag.tagId}/></span>
               <p>{tag.tagName}</p></li>
           )}

@@ -16,7 +16,7 @@ type Category = '-' | '+'
 
 function Records() {
   const [selected, setSelected] = useState({
-    tags: [] as number[],
+    tagIds: [] as number[],
     note: '',
     category: '-' as Category,
     amount: '0'
@@ -33,14 +33,14 @@ function Records() {
 
   return (
     <LayoutWrapper>
-      {selected.tags}
+      {selected.tagIds}
       --
       {selected.note}
       --
       {selected.category}
       --
       {selected.amount}
-      <HeaderSection value={selected.tags} onChange={(tags) => {onChange({tags});}}/>
+      <HeaderSection value={selected.tagIds} onChange={(tagIds) => {onChange({tagIds});}}/>
       <RecordsSection
         note={selected.note} onChangeNote={(note) => {onChange({note});}}
         category={selected.category} onChangeCategory={(category) => {onChange({category});}}
