@@ -1,6 +1,5 @@
-import React, {ChangeEventHandler, useRef} from 'react';
+import React, {ChangeEventHandler} from 'react';
 import styled from 'styled-components';
-import {Input} from '../Input';
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,7 +32,10 @@ const NotePart: React.FC<Props> = (props) => {
   };
   return (
     <Wrapper>
-      <div><span>备注：</span><input value={note} onChange={onChange} type="text" placeholder="请输入备注"/></div>
+      <div>
+        <span>备注：</span>
+        <input value={note} onChange={onChange} type="text" placeholder="请输入备注"/>
+      </div>
     </Wrapper>
   );
 };
