@@ -3,7 +3,7 @@ import Icon from 'components/Icon';
 import styled from 'styled-components';
 import TagsPart from './TagsPart';
 import {Link} from 'react-router-dom';
-import {useTags} from '../../hooks/useTag';
+import {useTags} from 'hooks/useTag';
 
 
 const Wrapper = styled.div`
@@ -26,7 +26,6 @@ type Props = {
 const HeaderSection: React.FC<Props> = (props) => {
   const {tags} = useTags();
   const selectedTagIds = props.value;
-
   const toggleTag = (tag: number) => {
     const index = selectedTagIds.indexOf(tag);
     if (index >= 0) {
