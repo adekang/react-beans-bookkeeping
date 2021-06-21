@@ -46,6 +46,8 @@ function Records() {
         amount={selected.amount} onChangeAmount={(amount) => {onChange({amount});}}
         onOk={() => submit()}
       />
+
+
     </LayoutWrapper>
   );
 }

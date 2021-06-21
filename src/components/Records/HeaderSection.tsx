@@ -26,12 +26,12 @@ type Props = {
 const HeaderSection: React.FC<Props> = (props) => {
   const {tags} = useTags();
   const selectedTagIds = props.value;
-  const toggleTag = (tag: number) => {
-    const index = selectedTagIds.indexOf(tag);
+  const toggleTag = (tagId: number) => {
+    const index = selectedTagIds.indexOf(tagId);
     if (index >= 0) {
-      props.onChange(selectedTagIds.filter(t => t !== tag));
+      props.onChange(selectedTagIds.filter(t => t !== tagId));
     } else {
-      props.onChange([...selectedTagIds, tag]);
+      props.onChange([tagId]);
     }
   };
 
