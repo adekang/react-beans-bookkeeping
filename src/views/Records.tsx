@@ -25,6 +25,8 @@ function Records() {
   const [selected, setSelected] = useState(defaultFormDate);
   const {addRecords} = useRecords();
 
+
+
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,

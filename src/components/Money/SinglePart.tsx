@@ -83,7 +83,6 @@ const SinglePart: React.FC<Props> = (props) => {
   const hash: { [K: string]: RecordItem[] } = {};
   const selectedRecords = records.filter(r => r.category === category);
 
-  console.log(selectedRecords);
   selectedRecords.map(r => {
     const key = day(r.createdAt).format('YYYY-MM-DD');
     if (!(key in hash)) {

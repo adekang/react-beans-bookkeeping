@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 
+
 const Wrapper = styled.div`
   display: flex;
   font-size: 14px;
@@ -51,6 +52,7 @@ const SelectPart: React.FC<Props> = (props) => {
   type Keys = keyof typeof currentMap
   const [currentList] = useState<Keys[]>(['-', '+']);
   const current = props.category;
+
   return (
     <Wrapper>
       {currentList.map(c =>

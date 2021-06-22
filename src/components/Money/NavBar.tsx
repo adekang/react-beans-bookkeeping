@@ -1,6 +1,8 @@
 import Icon from 'components/Icon';
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import {useRecords} from 'hooks/useRecords';
+import day from 'dayjs';
 
 const Wrapper = styled.div`
   min-height: 234px;
@@ -75,26 +77,33 @@ const OveragePart = styled.div`
 
 
 const NavBar: React.FC = () => {
-
   const [toggleSvg, setToggleSvg] = useState<boolean>(true);
   const changeSvg = () => {
     setToggleSvg(toggle => !toggle);
   };
+  const {computeAmount} = useRecords();
+  const overage = (o: number) => {
+    if (computeAmount('-') !== undefined) {
+      return o - computeAmount('-');
+    }
+  };
 
-
+  const date = new Date();
+  const year = day(date.toISOString()).format('YYYY');
+  const month = day(date.toISOString()).format('M');
   return (
     <Wrapper>
       <p>豆子记账</p>
       <CardSection>
         <CaptionPart>
           <div>余额预算</div>
-          <div>2019年 <span>7月</span></div>
+          <div>{year}年 <span>{month}月</span></div>
         </CaptionPart>
 
         <OveragePart>
           <div>
             <span>￥</span>
-            <em className="amount">{toggleSvg ? '2366' : '*****'}</em>
+            <em className="amount">{overage(30)}</em>
             <Icon onClick={() => changeSvg()} name={toggleSvg ? 'open_eye' : 'close_eye'}/>
           </div>
         </OveragePart>
