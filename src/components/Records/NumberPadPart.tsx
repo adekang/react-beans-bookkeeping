@@ -36,13 +36,16 @@ type Props = {
 const NumberPadPart: React.FC<Props> = (props) => {
   const [output, _setOutput] = useState('0');
   const setOutput = (output: string) => {
+    let newOutput: string;
     if (output.length > 16) {
-      output = output.slice(0, 16);
+      newOutput = output.slice(0, 16);
     } else if (output.length === 0) {
-      output = '0';
+      newOutput = '0';
+    } else {
+      newOutput = output;
     }
-    _setOutput(output);
-    props.onChangeAmount(parseInt(output));
+    _setOutput(newOutput);
+    props.onChangeAmount(parseInt(newOutput));
   };
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
