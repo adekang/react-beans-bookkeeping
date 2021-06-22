@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
-
+import day from 'dayjs';
 
 export type RecordItem = {
   tagIds: number[],
@@ -50,15 +50,25 @@ const useRecords = () => {
     }
   };
   // 计算今日支出
-  const dayExpenses = () => {
-
+  const dayExpenses = (category: string) => {
+    const newList = [...records].filter(r => r.category === category)
+      .sort((a, b) => day(b.createdAt).valueOf() - day(a.createdAt).valueOf());
+    if (newList.length === 0) {return [];}
+    const result: RecordItem[] = [];
+    for (let i = 0; i < newList.length; i++) {
+      const current = newList[i];
+      const oldtime = current.createdAt;
+      const newtime = (new Date()).toISOString();
+      if (day(oldtime).isSame(newtime, 'day')) {
+        result.push(current);
+      }
+    }
+    return result.map(t => t.amount).reduce((perNumber, sum) => {
+      return perNumber += sum;
+    }, 0);
   };
 
-  const dayIncome = () => {
-
-  };
-
-  return {records, addRecords, computeAmount};
+  return {records, addRecords, computeAmount, dayExpenses};
 };
 
 export {useRecords};

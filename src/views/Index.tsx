@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import {NavLink} from 'react-router-dom';
 import Icon from '../components/Icon';
 import styled from 'styled-components';
+import {useRecords} from '../hooks/useRecords';
 
 const Wrapper = styled.div`
   display: flex;
@@ -56,15 +57,16 @@ const Record = styled.div`
 `;
 
 function Index() {
+  const {dayExpenses} = useRecords();
   return (
     <Layout>
       <Wrapper>
         <h1>豆子记账</h1>
         <div>
-          今日支出：<span>200￥</span>
+          今日支出：<span>{dayExpenses('-')}￥</span>
         </div>
         <div>
-          今日收入：<span>1￥</span>
+          今日收入：<span>{dayExpenses('+')}￥</span>
         </div>
         <Record>
           <NavLink to="/index/records" activeClassName="selected">
