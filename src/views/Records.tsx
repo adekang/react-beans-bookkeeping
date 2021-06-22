@@ -24,7 +24,7 @@ const defaultFormDate = {
 
 function Records() {
   const [selected, setSelected] = useState(defaultFormDate);
-  const {records, addRecords} = useRecords();
+  const {addRecords} = useRecords();
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -33,9 +33,10 @@ function Records() {
   };
 
   const submit = () => {
-    addRecords(selected);
-    alert('保存成功');
-    setSelected(defaultFormDate);
+   if ( addRecords(selected)){
+     alert('保存成功');
+     setSelected(defaultFormDate);
+   }
   };
   return (
     <LayoutWrapper>
@@ -46,8 +47,6 @@ function Records() {
         amount={selected.amount} onChangeAmount={(amount) => {onChange({amount});}}
         onOk={() => submit()}
       />
-
-
     </LayoutWrapper>
   );
 }
