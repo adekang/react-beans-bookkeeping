@@ -1,4 +1,6 @@
 import React from 'react';
+import * as echarts from 'echarts';
+
 
 function IncomeLib() {
   return (
@@ -7,3 +9,5 @@ function IncomeLib() {
 }
 
 export {IncomeLib} ;
+
+
