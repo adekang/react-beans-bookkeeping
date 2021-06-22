@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Icon from 'components/Icon';
+import {useRecords} from '../../hooks/useRecords';
+import {useTags} from '../../hooks/useTag';
+import day from 'dayjs';
 
 
-const Wrapper = styled.div`
+const DateWrapper = styled.div`
+  display: flex;
+  padding: 24.5px 20px 0 20px;
+  justify-content: space-between;
+  color: #999999;
+  font-size: 14px;
+
+  > div {
+    display: flex;
+
+    > p {
+      :nth-child(odd) {
+        padding-right: 10px;
+      }
+    }
+  }
+
+`;
+const SingleWrapper = styled.div`
   > ul {
     display: flex;
     flex-direction: column;
@@ -49,14 +70,42 @@ const Wrapper = styled.div`
     }
   }
 `;
-const SinglePart: React.FC = () => {
+
+type Category = '-' | '+'
+type Props = {
+  category: Category
+}
+const SinglePart: React.FC<Props> = (props) => {
+  const {records} = useRecords();
+  const {getIcon, getName} = useTags();
+  const category = props.category;
+  const selectedRecords = records.filter(r => r.category === category);
   return (
-    <Wrapper>
-      <ul>
-        <li><p><span><Icon name="fruits"/></span>水果</p><p>-23.00</p></li>
-        <li><p><span>Icon</span>水果</p><p>-23.00</p></li>
-      </ul>
-    </Wrapper>
+    <div>
+      <DateWrapper>
+        <div>
+          <p>7月9日</p>
+          <p>星期六</p>
+        </div>
+        <div>
+          <p>收入：<span>123</span></p>
+          <p>支出：<span>123</span></p>
+        </div>
+      </DateWrapper>
+      <SingleWrapper>
+        <ul>
+          {selectedRecords.map((t, index) =>
+            <li key={index}>
+              {t.tagIds.map(tagId =>
+                <p><span><Icon name={getIcon(tagId)}/></span><i>{getName(tagId)}</i></p>
+              )}
+              <p>{t.amount}</p>
+              <p>{day(t.createdAt).format('YYYY年MM月DD日d')}</p>
+            </li>
+          )}
+        </ul>
+      </SingleWrapper>
+    </div>
   );
 };
 export default SinglePart;

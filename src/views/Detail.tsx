@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/Layout';
 import styled from 'styled-components';
 import NavBar from '../components/Money/NavBar';
 import SinglePart from '../components/Money/SinglePart';
 import SelectPart from '../components/Money/SelectPart';
-import DatePart from '../components/Money/DatePart';
+import {useRecords} from '../hooks/useRecords';
 
 const LayoutWrapper = styled(Layout)`
   display: flex;
@@ -12,15 +12,21 @@ const LayoutWrapper = styled(Layout)`
 `;
 
 
-function Detail() {
+const Detail: React.FC = () => {
+  type Keys = '-' | '+'
+  const [current, setCurrent] = useState<Keys>('-');
+
+  const onChange = (category: Partial<typeof current>) => {
+    setCurrent(category);
+  };
+
   return (
     <LayoutWrapper>
       <NavBar/>
-      <SelectPart/>
-      <DatePart/>
-      <SinglePart/>
+      <SelectPart category={current} onChangeCategory={(current: Keys) => {onChange(current);}}/>
+      <SinglePart category={current}/>
     </LayoutWrapper>
   );
-}
+};
 
 export default Detail;

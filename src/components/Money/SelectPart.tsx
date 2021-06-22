@@ -37,19 +37,25 @@ const Wrapper = styled.div`
   }
 `;
 
+type Category = '-' | '+'
+type Props = {
+  category: Category
+  onChangeCategory: (category: Category) => void
+}
 
-const SelectPart: React.FC = () => {
+
+const SelectPart: React.FC<Props> = (props) => {
   // 声明hash表
   const currentMap = {'-': '支出', '+': '收入'};
   // 将hash的key 当作类型 缩小类型范围
   type Keys = keyof typeof currentMap
   const [currentList] = useState<Keys[]>(['-', '+']);
-  const [current, setCurrent] = useState('-');
+  const current = props.category;
   return (
     <Wrapper>
       {currentList.map(c =>
         <li className={current === c ? 'selected' : ''}
-            onClick={() => {setCurrent(c);}} key={c}>
+            onClick={() => {props.onChangeCategory(c);}} key={c}>
           {currentMap[c]}
         </li>
       )}
