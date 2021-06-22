@@ -34,7 +34,7 @@ const SingleWrapper = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18.5px 0;
+      padding: 10px 0;
       border-bottom: 1px solid #EBEBEB;
 
       > p:nth-child(1) {
@@ -101,7 +101,6 @@ const SinglePart: React.FC<Props> = (props) => {
     return 0;
   });
 
-
   return (
     <div>
       {array.map(([date, records], index) => {
@@ -131,4 +130,5 @@ const SinglePart: React.FC<Props> = (props) => {
   );
 };
 export default SinglePart;
+
 
