@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Icon from 'components/Icon';
-import {useRecords} from '../../hooks/useRecords';
-import {useTags} from '../../hooks/useTag';
+import {RecordItem, useRecords} from 'hooks/useRecords';
+import {useTags} from 'hooks/useTag';
 import day from 'dayjs';
 
 
@@ -79,33 +79,56 @@ const SinglePart: React.FC<Props> = (props) => {
   const {records} = useRecords();
   const {getIcon, getName} = useTags();
   const category = props.category;
+
+  const hash: { [K: string]: RecordItem[] } = {};
   const selectedRecords = records.filter(r => r.category === category);
+
+  console.log(selectedRecords);
+  selectedRecords.map(r => {
+    const key = day(r.createdAt).format('YYYY-MM-DD');
+    if (!(key in hash)) {
+      hash[key] = [];
+    }
+    hash[key].push(r);
+    return hash;
+  });
+
+  // 把对象变为数组
+  const array = Object.entries(hash).sort((a, b) => {
+    if (a[0] === b[0]) return 0;
+    if (a[0] > b[0]) return -1;
+    if (a[0] < b[0]) return 1;
+    return 0;
+  });
+
+
   return (
     <div>
-      <DateWrapper>
-        <div>
-          <p>7月9日</p>
-          <p>星期六</p>
-        </div>
-        <div>
-          <p>收入：<span>123</span></p>
-          <p>支出：<span>123</span></p>
-        </div>
-      </DateWrapper>
-      <SingleWrapper>
-        <ul>
-          {selectedRecords.map((t, index) =>
-            <li key={index}>
-              {t.tagIds.map(tagId =>
-                <p><span><Icon name={getIcon(tagId)}/></span><i>{getName(tagId)}</i></p>
-              )}
-              <p>{t.amount}</p>
-              <p>{day(t.createdAt).format('YYYY年MM月DD日d')}</p>
-            </li>
-          )}
-        </ul>
-      </SingleWrapper>
+      {array.map(([date, records], index) => {
+        return (
+          <div key={index}>
+            <DateWrapper>
+              <div>
+                {date}
+              </div>
+            </DateWrapper>
+            <SingleWrapper>
+              <ul>
+                {records.map((t, index) =>
+                  <li key={index}>
+                    {t.tagIds.map((tagId, index) =>
+                      <p key={index}><span><Icon name={getIcon(tagId)}/></span><i>{getName(tagId)}</i></p>
+                    )}
+                    <p>{t.amount}</p>
+                  </li>
+                )}
+              </ul>
+            </SingleWrapper>
+          </div>
+        );
+      })}
     </div>
   );
 };
 export default SinglePart;
+

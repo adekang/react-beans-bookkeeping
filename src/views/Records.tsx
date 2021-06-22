@@ -14,17 +14,17 @@ const LayoutWrapper = styled.div`
 `;
 
 type Category = '-' | '+'
-const defaultFormDate = {
+export const defaultFormDate = {
   tagIds: [] as number[],
   note: '',
   category: '-' as Category,
   amount: 0
-
 };
 
 function Records() {
   const [selected, setSelected] = useState(defaultFormDate);
   const {addRecords} = useRecords();
+
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({
       ...selected,
@@ -33,10 +33,10 @@ function Records() {
   };
 
   const submit = () => {
-   if ( addRecords(selected)){
-     alert('保存成功');
-     setSelected(defaultFormDate);
-   }
+    if (addRecords(selected)) {
+      alert('保存成功');
+      setSelected(defaultFormDate);
+    }
   };
   return (
     <LayoutWrapper>

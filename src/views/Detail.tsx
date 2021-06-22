@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import NavBar from '../components/Money/NavBar';
 import SinglePart from '../components/Money/SinglePart';
 import SelectPart from '../components/Money/SelectPart';
-import {useRecords} from '../hooks/useRecords';
 
 const LayoutWrapper = styled(Layout)`
   display: flex;

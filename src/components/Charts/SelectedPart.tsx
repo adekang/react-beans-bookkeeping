@@ -4,7 +4,6 @@ import {OutlayLib} from './ChartsLib/OutlayLib';
 import {IncomeLib} from './ChartsLib/ IncomeLib';
 import {TotalLib} from './ChartsLib/TotalLib';
 import styled from 'styled-components';
-import {useRecords} from '../../hooks/useRecords';
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,7 +49,6 @@ const SwitchWrapper = styled.div`
 
 const SelectedPart: React.FC = () => {
   let {path, url} = useRouteMatch();
-  const {records} = useRecords();
   return (
     <Wrapper>
       <NavWrapper>

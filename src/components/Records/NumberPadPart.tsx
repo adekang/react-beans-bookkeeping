@@ -50,7 +50,7 @@ const NumberPadPart: React.FC<Props> = (props) => {
     if (!text) {return;}
     if (text === 'ok') {
       if (props.onOk) {
-        setOutput('')
+        setOutput('');
         props.onOk();
       }
       return;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import NumberPadPart from './NumberPadPart';
 import NotePart from './NotePart';
 import SelectionPart from './SelectionPart';
-import {useHistory} from 'react-router-dom';
 
 const Wrapper = styled.div`
   position: relative;
@@ -24,12 +23,6 @@ type Props = {
 }
 const RecordsSection: React.FC<Props> = (props) => {
 
-
-  let history = useHistory();
-  const submit = () => {
-    alert('保存成功');
-    history.push('/');
-  };
   return (
     <Wrapper>
       <SelectionPart {...props}/>
