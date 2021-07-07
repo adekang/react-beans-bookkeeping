@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   max-width: 414px;
   display: flex;
   flex-direction: column;
-  //margin: 0 auto;
+  margin: 0 auto;
 `;
 const Main = styled.div`
   flex-grow: 1;

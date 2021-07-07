@@ -10,6 +10,7 @@ const LayoutWrapper = styled.div`
   max-width: 414px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 
 `;
 
