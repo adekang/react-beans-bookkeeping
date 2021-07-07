@@ -42,9 +42,6 @@ const SwitchWrapper = styled.div`
   transform: translateX(-50%);
   width: 350px;
   height: 350px;
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
 `;
 
 const SelectedPart: React.FC = () => {

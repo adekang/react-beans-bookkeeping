@@ -68,7 +68,7 @@ const useRecords = () => {
     }, 0);
   };
 
-  return {records, addRecords, computeAmount, dayExpenses};
+  return {records, addRecords, computeAmount, dayExpenses,expenses,income};
 };
 
 export {useRecords};
