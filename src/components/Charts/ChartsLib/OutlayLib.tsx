@@ -9,11 +9,11 @@ function OutlayLib() {
   const {getName} = useTags();
   let myData = [{
     value: 0 as number,
-    name: '暂无记录' as string
+    name: '' as string
   }];
 
   const totalAmount = computeAmount('-');
-  const amount = expenses.map(t => t.amount/totalAmount);
+  const amount = expenses.map(t => t.amount / totalAmount);
   const tagIds = expenses.map(t => t.tagIds);
   let tagName = [];
   for (let i = 0; i < tagIds.length; i++) {
@@ -35,7 +35,12 @@ function OutlayLib() {
         type: 'pie',
         center: ['50%', '50%'],
         data: myData,
-        label: {show: false}
+        label: {
+          show: true,
+          position: 'inside',
+          color: '#fff',
+          fontSize: 14
+        },
       },
     ]
   };

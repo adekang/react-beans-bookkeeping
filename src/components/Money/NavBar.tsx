@@ -52,12 +52,6 @@ const CaptionPart = styled.div`
 `;
 const OveragePart = styled.div`
   padding-top: 15px;
-
-  > p {
-    font-size: 14px;
-    color: #B3B3B3;
-  }
-
   > div {
     color: #FF5657;
     font-size: 50px;
@@ -93,7 +87,7 @@ const NavBar: React.FC = () => {
   const month = day(date.toISOString()).format('M');
   return (
     <Wrapper>
-      <p>豆子记账</p>
+      <h1>豆子记账</h1>
       <CardSection>
         <CaptionPart>
           <div>余额预算</div>
