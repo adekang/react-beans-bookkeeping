@@ -11,11 +11,37 @@ export type RecordItem = {
 }
 type newRecordItem = Omit<RecordItem, 'createdAt'>
 
+const a = [{
+  'tagIds': [10],
+  'note': '',
+  'category': '-',
+  'amount': 25,
+  'createdAt': '2021-07-07T08:24:11.139Z'
+}, {'tagIds': [6], 'note': '', 'category': '-', 'amount': 18, 'createdAt': '2021-07-07T08:24:16.891Z'}, {
+  'tagIds': [8],
+  'note': '',
+  'category': '+',
+  'amount': 55,
+  'createdAt': '2021-07-07T08:24:20.593Z'
+}, {'tagIds': [3], 'note': '', 'category': '-', 'amount': 25, 'createdAt': '2021-07-07T08:24:25.104Z'}, {
+  'tagIds': [4],
+  'note': '',
+  'category': '+',
+  'amount': 28,
+  'createdAt': '2021-07-07T08:24:28.481Z'
+}];
+const firstRecords = JSON.stringify(a);
 const useRecords = () => {
   const [records, setRecords] = useState<RecordItem[]>([]);
+  const localRecords = JSON.parse(window.localStorage.getItem('records') || '[]');
   useEffect(() => {
-    setRecords(JSON.parse(window.localStorage.getItem('records') || '[]'));
+    if (localRecords.length !== 0) {
+      setRecords(localRecords);
+    } else {
+      setRecords(JSON.parse(firstRecords));
+    }
   }, []);
+
   useUpdate(() => {
     window.localStorage.setItem('records', JSON.stringify(records));
   }, [records]);
@@ -68,7 +94,7 @@ const useRecords = () => {
     }, 0);
   };
 
-  return {records, addRecords, computeAmount, dayExpenses,expenses,income};
+  return {records, addRecords, computeAmount, dayExpenses, expenses, income};
 };
 
 export {useRecords};

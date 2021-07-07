@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {generateOutput} from './generateOutput';
 
+
+
 const Wrapper = styled.div`
   .output {
     line-height: 50px;
@@ -70,7 +72,7 @@ const NumberPadPart: React.FC<Props> = (props) => {
         <button>1</button>
         <button>2</button>
         <button>3</button>
-        <button>今天</button>
+        <button className='date'>今天</button>
         <button>4</button>
         <button>5</button>
         <button>6</button>

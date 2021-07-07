@@ -51,10 +51,10 @@ const SelectedPart: React.FC = () => {
     <Wrapper>
       <NavWrapper>
         <li>
-          <Link to={`${url}/outlay`}>收入分析</Link>
+          <Link to={`${url}/outlay`}>支出分析</Link>
         </li>
         <li>
-          <Link to={`${url}/income`}>支出分析</Link>
+          <Link to={`${url}/income`}>收入分析</Link>
         </li>
       </NavWrapper>
       <SwitchWrapper>

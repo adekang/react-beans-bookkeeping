@@ -52,6 +52,7 @@ const CaptionPart = styled.div`
 `;
 const OveragePart = styled.div`
   padding-top: 15px;
+
   > div {
     color: #FF5657;
     font-size: 50px;
@@ -97,7 +98,7 @@ const NavBar: React.FC = () => {
         <OveragePart>
           <div>
             <span>￥</span>
-            <em className="amount">{overage(30)}</em>
+            {toggleSvg ? <em className="amount">{overage(2000)}</em> : '***'}
             <Icon onClick={() => changeSvg()} name={toggleSvg ? 'open_eye' : 'close_eye'}/>
           </div>
         </OveragePart>
