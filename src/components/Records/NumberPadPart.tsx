@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   }
 
   > div {
-    clear: both;
     > button {
       width: 25%;
       height: 65px;
@@ -71,7 +70,7 @@ const NumberPadPart: React.FC<Props> = props => {
   return (
     <Wrapper>
       <div className='output'>{output}</div>
-      <div onClick={onClickButtonWrapper}>
+      <div onClick={onClickButtonWrapper} className='clearfix'>
         <button>1</button>
         <button>2</button>
         <button>3</button>
